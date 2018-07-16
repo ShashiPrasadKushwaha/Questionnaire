@@ -1,0 +1,184 @@
+{
+  "data": {
+    "questions": [
+      {
+        "id": 18,
+        "question_type_id": 1,
+        "question_type_name": "CheckBox",
+        "question_name": "Type of Operating System ?",
+        "question_item": [
+          {
+            "answer_id": "11",
+            "name": "Android"
+          },
+          {
+            "answer_id": "12",
+            "name": "iOS"
+          },
+          {
+            "answer_id": "13",
+            "name": "Windows"
+          },
+          {
+            "answer_id": "14",
+            "name": "Linux"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "question_type_id": 2,
+        "question_type_name": "Radio",
+        "question_name": "Type of Brand ?",
+        "question_item": [
+          {
+            "answer_id": "21",
+            "name": "Samsung"
+          },
+          {
+            "answer_id": "22",
+            "name": "Apple"
+          },
+          {
+            "answer_id": "23",
+            "name": "Motorola"
+          },
+          {
+            "answer_id": "24",
+            "name": "Google"
+          },
+          {
+            "answer_id": "25",
+            "name": "HTC"
+          },
+          {
+            "answer_id": "26",
+            "name": "LG"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "question_type_id": 1,
+        "question_type_name": "CheckBox",
+        "question_name": "Included features ?",
+        "question_item": [
+          {
+            "answer_id": "31",
+            "name": "FM Player"
+          },
+          {
+            "answer_id": "32",
+            "name": "Finger Print"
+          },
+          {
+            "answer_id": "33",
+            "name": "NFC"
+          },
+          {
+            "answer_id": "34",
+            "name": "USB"
+          },
+          {
+            "answer_id": "35",
+            "name": "Wireless Charging"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "question_type_id": 2,
+        "question_type_name": "Radio",
+        "question_name": "Manufacture year ?",
+        "question_item": [
+          {
+            "answer_id": "41",
+            "name": "2009 - 2011"
+          },
+          {
+            "answer_id": "42",
+            "name": "2011 - 2013"
+          },
+          {
+            "answer_id": "43",
+            "name": "2013 - 2015"
+          },
+          {
+            "answer_id": "44",
+            "name": "2015 -  2018"
+          },
+          {
+            "answer_id": "45",
+            "name": "2018 -  above"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "question_type_id": 2,
+        "question_type_name": "Radio",
+        "question_name": "Processor Brand ?",
+        "question_item": [
+          {
+            "answer_id": "51",
+            "name": "Apple"
+          },
+          {
+            "answer_id": "52",
+            "name": "Broadcom"
+          },
+          {
+            "answer_id": "53",
+            "name": "Intel"
+          },
+          {
+            "answer_id": "54",
+            "name": "Snapdragon"
+          },
+          {
+            "answer_id": "55",
+            "name": "Mediatek"
+          },
+          {
+            "answer_id": "56",
+            "name": "AMD"
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "question_type_id": 2,
+        "question_type_name": "Radio",
+        "question_name": "Payment mode ?",
+        "question_item": [
+          {
+            "answer_id": "61",
+            "name": "Cash On Delivery"
+          },
+          {
+            "answer_id": "62",
+            "name": "Android Pay"
+          },
+          {
+            "answer_id": "63",
+            "name": "Net Banking"
+          },
+          {
+            "answer_id": "64",
+            "name": "Credit/Debit"
+          },
+          {
+            "answer_id": "65",
+            "name": "Saved Cards"
+          },
+          {
+            "answer_id": "66",
+            "name": "My Wallet"
+          }
+        ]
+      }
+    ]
+  },
+  "status": true,
+  "message": "The data was fetched successfully"
+}
