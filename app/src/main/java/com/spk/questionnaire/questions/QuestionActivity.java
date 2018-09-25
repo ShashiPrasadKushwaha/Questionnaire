@@ -1,10 +1,6 @@
 package com.spk.questionnaire.questions;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
@@ -25,8 +21,11 @@ import com.spk.questionnaire.questions.questionmodels.QuestionsItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class QuestionActivity extends AppCompatActivity
@@ -154,7 +153,6 @@ public class QuestionActivity extends AppCompatActivity
         Observable.just(questionEntities)
                 .map(this::insertingQuestionInDb)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
     }
 
@@ -195,7 +193,6 @@ public class QuestionActivity extends AppCompatActivity
         Observable.just(questionWithChoicesEntities)
                 .map(this::insertingQuestionWithChoicesInDb)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
     }
 

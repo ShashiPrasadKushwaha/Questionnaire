@@ -3,9 +3,6 @@ package com.spk.questionnaire.questions.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +22,9 @@ import com.spk.questionnaire.questions.questionmodels.QuestionsItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -37,7 +37,7 @@ import io.reactivex.schedulers.Schedulers;
 public class RadioBoxesFragment extends Fragment
 {
     private final ArrayList<RadioButton> radioButtonArrayList = new ArrayList<>();
-    boolean screenVisible = false;
+    private boolean screenVisible = false;
     private QuestionsItem radioButtonTypeQuestion;
     private FragmentActivity mContext;
     private Button nextOrFinishButton;
@@ -186,7 +186,6 @@ public class RadioBoxesFragment extends Fragment
         Observable.just(data)
                 .map(this::insertingInDb)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
     }
 

@@ -3,9 +3,6 @@ package com.spk.questionnaire.questions;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +21,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import io.reactivex.Completable;
+import io.reactivex.CompletableObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -50,7 +50,7 @@ public class AnswersActivity extends AppCompatActivity
         resultLinearLayout = findViewById(R.id.resultLinearLayout);
         toolBarInit();
 
-        getResultFromDatabase("");
+        getResultFromDatabase();
     }
 
     private void toolBarInit()
@@ -58,33 +58,21 @@ public class AnswersActivity extends AppCompatActivity
         Toolbar answerToolBar = findViewById(R.id.answerToolbar);
         answerToolBar.setNavigationIcon(R.drawable.ic_arrow_back);
         answerToolBar.setNavigationOnClickListener(v -> onBackPressed());
-
-        //answerToolbarTitle = answerToolBar.findViewById(R.id.answerToolbarTitle);
-        //answerToolbarTitle.setText("Answers");
     }
 
-    private void getResultFromDatabase(String some)
+    /*After, getting all result you can/must delete the saved results
+    although we are clearing the Tables as soon we start the QuestionActivity.*/
+    private void getResultFromDatabase()
     {
-        Observable.just("")
-                .map(this::questionsAndListOfSelectedChoicesFromDb)
-                .subscribeOn(Schedulers.io())
+        Completable.fromAction(() -> {
+            questionsList = appDatabase.getQuestionDao().getAllQuestions();
+            questionsWithAllChoicesList = appDatabase.getQuestionChoicesDao().getAllQuestionsWithChoices("1");
+        }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<String>()
+                .subscribe(new CompletableObserver()
                 {
                     @Override
                     public void onSubscribe(Disposable d)
-                    {
-
-                    }
-
-                    @Override
-                    public void onNext(String s)
-                    {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e)
                     {
 
                     }
@@ -94,20 +82,13 @@ public class AnswersActivity extends AppCompatActivity
                     {
                         makeJsonDataToMakeResultView();
                     }
+
+                    @Override
+                    public void onError(Throwable e)
+                    {
+
+                    }
                 });
-    }
-
-    /*After, getting all result you can/must delete the saved results
-    although we are clearing the Tables as soon we start the QuestionActivity.*/
-    private String questionsAndListOfSelectedChoicesFromDb(String some)
-    {
-        questionsList = appDatabase.getQuestionDao().getAllQuestions();
-        questionsWithAllChoicesList = appDatabase.getQuestionChoicesDao().getAllQuestionsWithChoices("1");
-
-        //appDatabase.getQuestionDao().deleteAllQuestions();
-        //appDatabase.getQuestionChoicesDao().deleteAllChoicesOfQuestion();
-
-        return "";
     }
 
     /*Here, JSON got created and send to make Result View as per Project requirement.

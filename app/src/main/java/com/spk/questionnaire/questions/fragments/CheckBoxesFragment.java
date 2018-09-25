@@ -3,9 +3,6 @@ package com.spk.questionnaire.questions.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -37,7 +38,7 @@ import io.reactivex.schedulers.Schedulers;
 public class CheckBoxesFragment extends Fragment
 {
     private final ArrayList<CheckBox> checkBoxArrayList = new ArrayList<>();
-    int atLeastOneChecked = 0;
+    private int atLeastOneChecked = 0;
     private FragmentActivity mContext;
     private Button nextOrFinishButton;
     //private Button previousButton;
@@ -55,7 +56,7 @@ public class CheckBoxesFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_check_boxes, container, false);
 
@@ -195,7 +196,6 @@ public class CheckBoxesFragment extends Fragment
         Observable.just(data)
                 .map(this::insertingInDb)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
     }
 
@@ -257,7 +257,7 @@ public class CheckBoxesFragment extends Fragment
             /*As user comes back for any modification in choices, "setUserVisibleHint" fragment lifecycle method get called, and "checkBox.setChecked(true)"
              * statement will be executed as many times as previously user checked.
              * On that, this below block will get executed automatically,
-             * where the this method(saveActionsOfCheckBox()) also executed which is unnecessary.
+             * where this method(saveActionsOfCheckBox()) also executed which is unnecessary.
              * That's why we follow "setOnClickListener" instead of "setOnCheckedChangeListener".*/
 
             /*checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
